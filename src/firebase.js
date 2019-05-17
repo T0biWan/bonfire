@@ -1,14 +1,14 @@
 import firebase from 'firebase'
-import firestore from 'firebase/firestore'
 
 var config = {
-  apiKey: "",
-  authDomain: "",
-  databaseURL: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: ""
+  apiKey: '',
+  authDomain: '',
+  databaseURL: '',
+  projectId: '',
+  storageBucket: '',
+  messagingSenderId: '',
+  appId: ''
 };
 
-const firebaseApp = firebase.initializeApp(config);
+const firebaseApp = firebase.initializeApp(config)
 export default firebaseApp
