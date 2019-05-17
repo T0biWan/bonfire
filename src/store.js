@@ -10,26 +10,32 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    setCorgis(state, payload) { state.corgis = payload }
+    setCorgis (state, payload) { state.corgis = payload }
   },
 
   actions: {
     // refactor
-
     login (context, payload) {
       firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
         .then(payload => { context.commit('setUser', { id: payload.user.uid }) })
         .catch(error => { console.log(error) })
     },
 
-    async getCorgies(context) {
+    async create (context, payload) {
       return new Promise((resolve, reject) => {
-        firebase.firestore().collection('corgis').get()
+        firebase.firestore().collection(payload.collection).add(payload.data)
+          .then(resolve())
+          .catch(error => { console.log(error) })
+      })
+    },
+
+    async read (context, payload) {
+      return new Promise((resolve, reject) => {
+        firebase.firestore().collection(payload.collection).get()
           .then(snapshot => {
-            const corgis = []
-            for (let document of snapshot.docs) corgis.push({ id: document.id, name: document.data().name })
-            context.commit('setCorgis', corgis)
-            resolve()
+            const documents = []
+            for (let document of snapshot.docs) documents.push(document)
+            resolve(documents)
           })
           .catch(error => {
             console.log(error)
@@ -37,27 +43,40 @@ export default new Vuex.Store({
       })
     },
 
-    async uploadCorgi(context, payload) {
-      firebase.firestore().collection('corgis').add(payload)
-        .then(payload => { resolve(payload.id) })
-        .catch(error => { console.log(error) })
-    },
-
-    async updateCorgi (context, payload) {
+    async update (context, collection, payload) {
       return new Promise((resolve, reject) => {
-        firebase.firestore().collection('corgis').doc(payload.corgiId).update(payload.newData)
-          .then(payload => { resolve(payload.id) })
+        firebase.firestore().collection(collection).doc(payload.id).update(payload.newData)
+          .then(resolve())
           .catch(error => { console.log(error) })
       })
+    },
+
+    async delete (context, collection, payload) {
+      return new Promise((resolve, reject) => {
+        firebase.firestore().collection(collection).doc(payload.id).delete()
+          .then(resolve())
+          .catch(error => { console.log(error) })
+      })
+    },
+
+    async uploadCorgi (context, corgi) {
+      context.dispatch('create', { collection: 'corgis', data: corgi })
+    },
+
+    async getCorgies (context) {
+      const documents = await context.dispatch('read', { collection: 'corgis' })
+      const corgis = []
+      for (let document of documents) corgis.push({ id: document.id, name: document.data().name })
+      context.commit('setCorgis', corgis)
+    },
+
+    async updateCorgi (context, corgi) {
+      await context.dispatch('update', payload)
     },
 
     async deleteCorgi (context, payload) {
-      return new Promise((resolve, reject) => {
-        firebase.firestore().collection('corgis').doc(payload.corgiId).delete(payload.newData)
-          .then(payload => { resolve(payload.id) })
-          .catch(error => { console.log(error) })
-      })
-    },
+      await context.dispatch('delete', 'corgis', payload)
+    }
   },
 
   getters: {
