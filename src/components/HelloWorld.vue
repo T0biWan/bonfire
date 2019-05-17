@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>{{ msg }}</h1>
+    <h1>Welcome to Your Bonfire</h1>
+    <div>{{ corgis }}</div>
   </div>
 </template>
 
@@ -8,8 +9,12 @@
 export default {
   name: 'HelloWorld',
 
-  props: {
-    msg: String
+  mounted () {
+    this.$store.dispatch('getCorgies')
+  },
+
+  computed: {
+    corgis () { return this.$store.getters.corgis }
   }
 }
 </script>
