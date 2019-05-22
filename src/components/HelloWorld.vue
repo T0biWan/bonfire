@@ -6,11 +6,14 @@
 </template>
 
 <script>
+import * as api from '@/api/corgi-api'
+
 export default {
   name: 'HelloWorld',
 
   mounted () {
-    this.$store.dispatch('getCorgies')
+    api.getCorgis()
+    // this.$store.dispatch('getCorgies')
   },
 
   computed: {
