@@ -67,7 +67,8 @@ export default new Vuex.Store({
   //   },
   //
     async getCorgies (context) {
-      context.commit('setCorgis', api.getCorgis())
+      const corgis = await api.getCorgis()
+      context.commit('setCorgis', corgis)
     },
   //
   //   async updateCorgi (context, corgi) {

@@ -1,7 +1,18 @@
 <template>
   <div>
     <h1>Welcome to Your Bonfire</h1>
-    <div>{{ corgis }}</div>
+
+    <table>
+      <thead>
+        <th>id</th><th>name</th>
+      </thead>
+      <tbody>
+        <tr v-for="corgi in corgis" :key="corgi.id">
+          <td>{{ corgi.id }}</td>
+          <td>{{ corgi.name }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -11,9 +22,9 @@ import * as api from '@/api/corgi-api'
 export default {
   name: 'HelloWorld',
 
-  mounted () {
-    api.getCorgis()
-    // this.$store.dispatch('getCorgies')
+  created () {
+    // api.getCorgis()
+    this.$store.dispatch('getCorgies')
   },
 
   computed: {
