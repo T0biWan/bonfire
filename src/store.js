@@ -24,60 +24,60 @@ export default new Vuex.Store({
     //     .catch(error => { console.log(error) })
     // },
 
-  //   async create (context, payload) {
-  //     return new Promise((resolve, reject) => {
-  //       firebase.firestore().collection(payload.collection).add(payload.data)
-  //         .then(resolve())
-  //         .catch(error => { console.log(error) })
-  //     })
-  //   },
-  //
-  //   async read (context, payload) {
-  //     return new Promise((resolve, reject) => {
-  //       firebase.firestore().collection(payload.collection).get()
-  //         .then(snapshot => {
-  //           const documents = []
-  //           for (let document of snapshot.docs) documents.push(document)
-  //           resolve(documents)
-  //         })
-  //         .catch(error => {
-  //           console.log(error)
-  //         })
-  //     })
-  //   },
-  //
-  //   async update (context, collection, payload) {
-  //     return new Promise((resolve, reject) => {
-  //       firebase.firestore().collection(collection).doc(payload.id).update(payload.newData)
-  //         .then(resolve())
-  //         .catch(error => { console.log(error) })
-  //     })
-  //   },
-  //
-  //   async delete (context, collection, payload) {
-  //     return new Promise((resolve, reject) => {
-  //       firebase.firestore().collection(collection).doc(payload.id).delete()
-  //         .then(resolve())
-  //         .catch(error => { console.log(error) })
-  //     })
-  //   },
-  //
-  //   async uploadCorgi (context, corgi) {
-  //     context.dispatch('create', { collection: 'corgis', data: corgi })
-  //   },
-  //
+    //   async create (context, payload) {
+    //     return new Promise((resolve, reject) => {
+    //       firebase.firestore().collection(payload.collection).add(payload.data)
+    //         .then(resolve())
+    //         .catch(error => { console.log(error) })
+    //     })
+    //   },
+    //
+    //   async read (context, payload) {
+    //     return new Promise((resolve, reject) => {
+    //       firebase.firestore().collection(payload.collection).get()
+    //         .then(snapshot => {
+    //           const documents = []
+    //           for (let document of snapshot.docs) documents.push(document)
+    //           resolve(documents)
+    //         })
+    //         .catch(error => {
+    //           console.log(error)
+    //         })
+    //     })
+    //   },
+    //
+    //   async update (context, collection, payload) {
+    //     return new Promise((resolve, reject) => {
+    //       firebase.firestore().collection(collection).doc(payload.id).update(payload.newData)
+    //         .then(resolve())
+    //         .catch(error => { console.log(error) })
+    //     })
+    //   },
+    //
+    //   async delete (context, collection, payload) {
+    //     return new Promise((resolve, reject) => {
+    //       firebase.firestore().collection(collection).doc(payload.id).delete()
+    //         .then(resolve())
+    //         .catch(error => { console.log(error) })
+    //     })
+    //   },
+    //
+    //   async uploadCorgi (context, corgi) {
+    //     context.dispatch('create', { collection: 'corgis', data: corgi })
+    //   },
+    //
     async getCorgies (context) {
       const corgis = await api.getCorgis()
       context.commit('setCorgis', corgis)
-    },
-  //
-  //   async updateCorgi (context, corgi) {
-  //     await context.dispatch('update', payload)
-  //   },
-  //
-  //   async deleteCorgi (context, payload) {
-  //     await context.dispatch('delete', 'corgis', payload)
-  //   }
+    }
+    //
+    //   async updateCorgi (context, corgi) {
+    //     await context.dispatch('update', payload)
+    //   },
+    //
+    //   async deleteCorgi (context, payload) {
+    //     await context.dispatch('delete', 'corgis', payload)
+    //   }
   },
 
   getters: {

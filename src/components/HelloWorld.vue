@@ -17,13 +17,11 @@
 </template>
 
 <script>
-import * as api from '@/api/corgi-api'
 
 export default {
   name: 'HelloWorld',
 
   created () {
-    // api.getCorgis()
     this.$store.dispatch('getCorgies')
   },
 
@@ -35,4 +33,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+table {
+  width: 30%;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
 </style>

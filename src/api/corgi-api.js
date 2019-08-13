@@ -19,7 +19,7 @@ export async function getCorgis () {
 //   const documents = await context.dispatch('read', { collection: 'corgis' })
 //   const corgis = []
 //   for (let document of documents) corgis.push({ id: document.id, name: document.data().name })
-  // context.commit('setCorgis', corgis)
+// context.commit('setCorgis', corgis)
 // },
 //
 // async updateCorgi (context, corgi) {
