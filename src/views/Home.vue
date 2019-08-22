@@ -1,18 +1,18 @@
 <template>
   <div class="home">
     <img alt="logo" src="../assets/logo.png">
-    <HelloWorld />
+    <Showcase />
   </div>
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld.vue'
+import Showcase from '@/components/Showcase.vue'
 
 export default {
   name: 'home',
 
   components: {
-    HelloWorld
+    Showcase
   }
 }
 </script>

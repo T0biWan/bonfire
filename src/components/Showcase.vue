@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Showcase',
 
   created () {
     // this.$store.dispatch('create_soul', { name: 'Korvo' })
