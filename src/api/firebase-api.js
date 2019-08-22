@@ -1,9 +1,9 @@
-import firebase from '@/firebase.js'
+import firebase from '@/api/firebase.js'
 
 export async function create (collection, data) {
   return new Promise((resolve, reject) => {
     firebase.firestore().collection(collection).add(data)
-      .then(resolve())
+      .then(snapshot => resolve(snapshot.id))
       .catch(error => { console.log(error) })
   })
 }
@@ -14,24 +14,46 @@ export async function read (collection) {
       .then(snapshot => {
         const documents = []
         for (let document of snapshot.docs) documents.push(document)
-        // console.log('read', documents);
         resolve(documents)
       })
       .catch(error => { console.log(error) })
   })
 }
 
-export async function update (collection, documentId, data) {
+export async function readById (collection, id) {
   return new Promise((resolve, reject) => {
-    firebase.firestore().collection(collection).doc(documentId).update(data)
+    firebase.firestore().collection(collection).doc(id).get()
+      .then(snapshot => {
+        const document = snapshot
+        resolve(document)
+      })
+      .catch(error => { console.log(error) })
+  })
+}
+
+export async function readByField (collection, field, value) {
+  return new Promise((resolve, reject) => {
+    firebase.firestore().collection(collection).where(field, '==', value).get()
+      .then(snapshot => {
+        const documents = []
+        for (let document of snapshot.docs) documents.push(document)
+        resolve(documents)
+      })
+      .catch(error => { console.log(error) })
+  })
+}
+
+export async function update (collection, id, data) {
+  return new Promise((resolve, reject) => {
+    firebase.firestore().collection(collection).doc(id).update(data)
       .then(resolve())
       .catch(error => { console.log(error) })
   })
 }
 
-export async function _delete (collection, documentId) {
+export async function remove (collection, id) {
   return new Promise((resolve, reject) => {
-    firebase.firestore().collection(collection).doc(documentId).delete()
+    firebase.firestore().collection(collection).doc(id).delete()
       .then(resolve())
       .catch(error => { console.log(error) })
   })
