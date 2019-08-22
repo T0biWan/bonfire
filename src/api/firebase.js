@@ -1,13 +1,13 @@
 import firebase from 'firebase'
 
 var config = {
-  apiKey: 'AIzaSyBqA4ShF2HcVxdwranxeySx5K12T9Vv7k8',
-  authDomain: 'moneyflow-f6131.firebaseapp.com',
-  databaseURL: 'https://moneyflow-f6131.firebaseio.com',
-  projectId: 'moneyflow-f6131',
-  storageBucket: 'moneyflow-f6131.appspot.com',
-  messagingSenderId: '494123812442',
-  appId: '1:494123812442:web:3098aaa4f55a3d38'
+  apiKey: 'AIzaSyAQ8TIocG8HyPdFrvp0IdTVBVgj48MjHEM',
+  authDomain: 'souls-f75b2.firebaseapp.com',
+  databaseURL: 'https://souls-f75b2.firebaseio.com',
+  projectId: 'souls-f75b2',
+  storageBucket: '',
+  messagingSenderId: '91779100524',
+  appId: '1:91779100524:web:45b1cd576a95e69b'
 }
 
 const firebaseApp = firebase.initializeApp(config)

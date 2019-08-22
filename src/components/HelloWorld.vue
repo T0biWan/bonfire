@@ -20,7 +20,7 @@ export default {
   name: 'HelloWorld',
 
   created () {
-    // this.$store.dispatch('create_soul', { name: '3' })
+    // this.$store.dispatch('create_soul', { name: 'Korvo' })
     this.$store.dispatch('get_souls')
     // this.$store.dispatch('get_soul_by_id', 'QTDZWFY8PLmYIo7GuKCn')
     // this.$store.dispatch('get_souls_by_field', { field: 'name', value: '33'})
