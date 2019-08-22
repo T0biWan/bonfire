@@ -13,8 +13,6 @@ var config = {
 const firebaseApp = firebase.initializeApp(config)
 export default firebaseApp
 
-
-
 export async function create (collection, data) {
   return new Promise((resolve, reject) => {
     firebase.firestore().collection(collection).add(data)

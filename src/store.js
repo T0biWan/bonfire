@@ -16,6 +16,7 @@ export default new Vuex.Store({
   actions: {
     async create_soul (context, soul) {
       const id = await api.create_soul(soul)
+      return id
     },
 
     async get_souls (context) {

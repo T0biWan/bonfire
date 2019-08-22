@@ -17,7 +17,7 @@ function instantiateSoul (document) {
   const id = document.id
   const name = document.data().name
 
-  return new datamodel.Soul(id, name)
+  return new Soul(id, name)
 }
 
 export async function create_soul (soul) {
@@ -28,20 +28,20 @@ export async function create_soul (soul) {
 export async function get_souls () {
   const documents = await firebase.read('souls')
   const souls = []
-  for (let document of documents) souls.push(parseDocumentToSoul(document))
+  for (let document of documents) souls.push(instantiateSoul(document))
   return souls
 }
 
 export async function get_soul_by_id (id) {
   const document = await firebase.readById('souls', id)
-  const souls = parseDocumentToSoul(document)
+  const souls = instantiateSoul(document)
   return souls
 }
 
 export async function get_souls_by_field (field, value) {
   const documents = await firebase.readByField('souls', field, value)
   const souls = []
-  for (let document of documents) souls.push(parseDocumentToSoul(document))
+  for (let document of documents) souls.push(instantiateSoul(document))
   return souls
 }
 
