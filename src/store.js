@@ -9,6 +9,10 @@ export default new Vuex.Store({
     souls: null
   },
 
+  getters: {
+    souls (state) { return state.souls }
+  },
+
   mutations: {
     set_souls (state, payload) { state.souls = payload }
   },
@@ -41,9 +45,5 @@ export default new Vuex.Store({
     async delete_soul (context, id) {
       await api.delete_soul(id)
     }
-  },
-
-  getters: {
-    souls (state) { return state.souls }
   }
 })
