@@ -1,23 +1,11 @@
 import * as firebase from '@/api/firebase'
-
-class Soul {
-  constructor (id, name) {
-    this._id = id
-    this._name = name
-  }
-
-  get id () { return this._id }
-  get name () { return this._name }
-
-  set id (id) { this._id = id }
-  set name (name) { this._name = name }
-}
+import * as soulModel from '@/models/soul'
 
 function instantiateSoul (document) {
   const id = document.id
   const name = document.data().name
 
-  return new Soul(id, name)
+  return new soulModel.Soul(id, name)
 }
 
 export async function create_soul (soul) {
