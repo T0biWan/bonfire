@@ -6,15 +6,33 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    souls: null
+    souls: null,
+    count: 0,
+
+    all: {},
+    active: false,
+
+    new_souls: {},
+    active_new_soul: false
   },
 
   getters: {
-    souls (state) { return state.souls }
+    souls (state) { return state.souls },
+
+    new_souls (state) { return state.new_souls },
+    new_soulById (state, id) { return state.all[id] || null },
+    active_new_soul (state, id) { return state.active ? state.all[state.active] : false }
   },
 
   mutations: {
-    set_souls (state, payload) { state.souls = payload }
+    increment (state) { state.count++ },
+    set_souls (state, payload) { state.souls = payload },
+
+    set_active_new_soul (state, new_soul_id) { state.active_new_soul = new_soul_id },
+    flush_new_souls (state) { state.new_souls = {} },
+    add_new_soul (state, {new_soul_id, new_soul}) { Vue.set(state.new_souls, new_soul_id, new_soul) },
+    update_new_soul (state, {new_soul_id, new_soul}) { state.new_souls[new_soul_id] = new_soul },
+    // remove_new_soul (state, new_soul_id) { delete state.new_souls[new_soul_id] }
   },
 
   actions: {
@@ -26,6 +44,10 @@ export default new Vuex.Store({
     async get_souls (context) {
       const souls = await api.get_souls()
       context.commit('set_souls', souls)
+
+      context.commit ('add_new_soul', {'new_soul_id': souls[0].id, 'new_soul': souls[0]})
+      context.commit ('add_new_soul', {'new_soul_id': souls[1].id, 'new_soul': souls[1]})
+      context.commit ('add_new_soul', {'new_soul_id': souls[2].id, 'new_soul': souls[2]})
     },
 
     async get_soul_by_id (context, id) {
