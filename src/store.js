@@ -3,7 +3,9 @@ import Vuex from 'vuex'
 import * as api from '@/api/souls-api'
 
 Vue.use(Vuex)
-
+https://medium.com/js-dojo/structuring-vuex-modules-for-relationships-speed-and-durability-de25f7403643
+https://vuejs.org/v2/guide/reactivity.html
+https://vuejs.org/v2/guide/list.html#Object-Change-Detection-Caveats
 export default new Vuex.Store({
   state: {
     souls: null,
@@ -39,6 +41,11 @@ export default new Vuex.Store({
     async create_soul (context, soul) {
       const id = await api.create_soul(soul)
       return id
+    },
+
+    all({commit}, all){
+      for(let album of all)
+        commit('add', album)
     },
 
     async get_souls (context) {
