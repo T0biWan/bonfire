@@ -20,12 +20,12 @@ export default {
   name: 'Showcase',
 
   created () {
-    // this.$store.dispatch('souls/create_soul', { name: 'Korvo' })
     this.$store.dispatch('souls/get_souls')
-    // this.$store.dispatch('souls/get_soul_by_id', 'D56zJTGMluTUh8LRukqP')
-    // this.$store.dispatch('souls/get_souls_by_field', { field: 'name', value: 'Kaddi'})
-    // this.$store.dispatch('souls/update_soul', { id: 'lnsNTaw0z1li7n5WiggR', data: { name: '1' } })
-    // this.$store.dispatch('souls/delete_soul', 'QTDZWFY8PLmYIo7GuKCn')
+    // this.$store.dispatch('souls/create_soul', { name: 'Test' })
+    // this.$store.dispatch('souls/get_soul_by_id', 'iYn0x9XiREySOiJOA7kT')
+    // this.$store.dispatch('souls/get_souls_by_field', { field: 'name', value: 'Korvo'})
+    // this.$store.dispatch('souls/update_soul', { id: 'iYn0x9XiREySOiJOA7kT', data: { name: '1' } })
+    // this.$store.dispatch('souls/delete_soul', 'Nxm0K41pMG6PPFqF94KY')
   },
 
   computed: {
