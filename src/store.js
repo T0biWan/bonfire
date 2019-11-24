@@ -8,10 +8,4 @@ export default new Vuex.Store({
   modules: {
     souls: souls.module
   }
-}
-
-export default new Vuex.Store({
-  modules: {
-    souls: souls_container.module
-  }
 })
