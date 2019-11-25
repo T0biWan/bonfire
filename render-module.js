@@ -121,14 +121,14 @@ const ${ressource}s_container = {
   parser: {
     instantiate_${ressource}: function (document) {
       const ${attributes[0]} = document.${attributes[0]}
-      ${attributes.slice(1).map(a => `const ${a} = document.data().${a}`).join('\n')}
+      ${attributes.slice(1).map(a => `const ${a} = document.data().${a}`).join(`\n${tab}${tab}${tab}`)}
 
       return new ${ressource}_model.${ressource.charAt(0).toUpperCase() + ressource.slice(1)}(id, name)
     }
   }
 }
 
-export default souls_container
+export default ${ressource}_container
 `
 
-fs.writeFileSync(`${ressource.toLowerCase()}s_container.js`, content)
+fs.writeFileSync(`${ressource.toLowerCase()}s.js`, content)
