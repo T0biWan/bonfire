@@ -123,12 +123,12 @@ const ${ressource}s_container = {
       const ${attributes[0]} = document.${attributes[0]}
       ${attributes.slice(1).map(a => `const ${a} = document.data().${a}`).join(`\n${tab}${tab}${tab}`)}
 
-      return new ${ressource}_model.${ressource.charAt(0).toUpperCase() + ressource.slice(1)}(id, name)
+      return new ${ressource}_model.${ressource.charAt(0).toUpperCase() + ressource.slice(1)}(${attributes.join(', ')})
     }
   }
 }
 
-export default ${ressource}_container
+export default ${ressource}s_container
 `
 
 fs.writeFileSync(`${ressource.toLowerCase()}s.js`, content)
