@@ -11,7 +11,7 @@ const attributes = command_line_arguments.slice(1)
 const tab = '  '
 const content =
 `import Vue from 'vue'
-import * as firebase from '@/api/firebase'
+import * as backend from '@/api/backend'
 import * as ${ressource}_model from '@/models/${ressource}'
 
 const ${ressource}s_container = {
