@@ -1,6 +1,9 @@
 // helper script to make Vuex modules
 // this file expects the resource name and its attributes as command line arguments
-// node render-module <ressource> <attribute> [<attribute> ...]
+// node render-module.js <ressource> <attribute> [<attribute> ...]
+//
+// For Example:
+// node render-module.js Note id author created edited markdown
 
 const fs = require('fs')
 
@@ -10,8 +13,7 @@ const attributes = command_line_arguments.slice(1)
 
 const tab = '  '
 const content =
-`import Vue from 'vue'
-import * as firebase from '@/api/firebase'
+`import * as backend from '@/api/backend'
 import * as ${ressource}_model from '@/models/${ressource}'
 
 const ${ressource}s_container = {
@@ -87,34 +89,34 @@ const ${ressource}s_container = {
 
   api: {
     get_${ressource}s: async function () {
-      const documents = await firebase.read('${ressource}s')
+      const documents = await backend.read('${ressource}s')
       const ${ressource}s = documents.map(document => ${ressource}s_container.parser.instantiate_${ressource}(document))
       return ${ressource}s
     },
 
     create_${ressource}: async function (${ressource}) {
-      const id = await firebase.create('${ressource}s', ${ressource})
+      const id = await backend.create('${ressource}s', ${ressource})
       return id
     },
 
     get_${ressource}_by_id: async function (id) {
-      const document = await firebase.readById('${ressource}s', id)
+      const document = await backend.readById('${ressource}s', id)
       const ${ressource}s = ${ressource}s_container.parser.instantiate_${ressource}(document)
       return ${ressource}s
     },
 
     get_${ressource}s_by_field: async function (field, value) {
-      const documents = await firebase.readByField('${ressource}s', field, value)
+      const documents = await backend.readByField('${ressource}s', field, value)
       const ${ressource}s = documents.map(document => ${ressource}s_container.parser.instantiate_${ressource}(document))
       return ${ressource}s
     },
 
     update_${ressource}: async function (id, data) {
-      await firebase.update('${ressource}s', id, data)
+      await backend.update('${ressource}s', id, data)
     },
 
     delete_${ressource}: async function (id) {
-      await firebase.remove('${ressource}s', id)
+      await backend.remove('${ressource}s', id)
     }
   },
 

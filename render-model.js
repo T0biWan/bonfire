@@ -1,6 +1,9 @@
-// helper script to make ES6 class files for modelss
+// helper script to make ES6 class files for models
 // this file expects the resource name and its attributes as command line arguments
 // node render-model <ressource> <attribute> [<attribute> ...]
+//
+// For Example:
+// node render-model.js Note id author created edited markdown
 
 const fs = require('fs')
 
