@@ -3,7 +3,7 @@
 // node render-model <ressource> <attribute> [<attribute> ...]
 //
 // For Example:
-// node render-model.js Note id author created edited markdown
+// node render-model.js note id author created edited markdown
 
 const fs = require('fs')
 
