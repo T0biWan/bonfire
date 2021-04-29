@@ -1,14 +1,3 @@
-// read me schreiben
-// this file assumes you are working with firebase and that the collection is called '<ressource>s'
-// If your ressource is called `soul`, the collection whould be called `souls`
-// so bauen das beide dateien mit einem skript erstellt werden können?
-// Achtung class name wird als einziges großgeschrieben
-// imports müssen auch erklärt werden
-// Was wird als vorrausgesetzt angesehen
-// Erklären wie man das ding dann importiert
-// wo müssen die dateien eingefügt werden erklären
-// im guide auch erklären wir man module in dateien auslagert
-
 # Bonfire
 
 > A CRUD skeleton for vue projects using firebase
